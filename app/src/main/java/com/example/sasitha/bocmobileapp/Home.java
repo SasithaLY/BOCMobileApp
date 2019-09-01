@@ -35,6 +35,14 @@ public class Home extends AppCompatActivity
 //                        .setAction("Action", null).show();
 //            }
 //        });
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        Fragment fragmentD = new DashboardFragment();
+
+        fragmentTransaction.replace(R.id.screen_area, fragmentD);
+
+        fragmentTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -89,8 +97,7 @@ public class Home extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(intent);
+            fragment = new DashboardFragment();
         } else if (id == R.id.nav_accounts) {
 
         } else if (id == R.id.nav_ownAccountTrans) {
