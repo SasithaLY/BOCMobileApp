@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="accounts">
+        <item>Select Account</item>
+        <item>0082166378</item>
+        <item>007518902</item>
+        <item>007819005</item>
+    </string-array>
+</resources>
