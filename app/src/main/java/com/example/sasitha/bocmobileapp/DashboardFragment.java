@@ -27,7 +27,7 @@ public class DashboardFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         btnOwnAccount = (Button) view.findViewById(R.id.btnOwnAcc);
@@ -46,6 +46,7 @@ public class DashboardFragment extends Fragment {
                 fragmentTransaction.replace(R.id.screen_area, fragment);
 
                 fragmentTransaction.commit();
+                getActivity().setTitle("Own Account Transactions");
             }
         });
 

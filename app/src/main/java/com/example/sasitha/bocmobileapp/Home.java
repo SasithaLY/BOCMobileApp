@@ -52,6 +52,8 @@ public class Home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -97,10 +99,12 @@ public class Home extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
+            setTitle("Home");
             fragment = new DashboardFragment();
         } else if (id == R.id.nav_accounts) {
 
         } else if (id == R.id.nav_ownAccountTrans) {
+            setTitle("Own Account Transactions");
             fragment = new OwnAccountFragment();
 
         } else if (id == R.id.nav_thirdPartyTrans) {
@@ -114,9 +118,7 @@ public class Home extends AppCompatActivity
         if(fragment != null){
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
             fragmentTransaction.replace(R.id.screen_area, fragment);
-
             fragmentTransaction.commit();
         }
 
