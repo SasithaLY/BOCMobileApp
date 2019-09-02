@@ -104,7 +104,7 @@ public class Home extends AppCompatActivity
             fragment = new OwnAccountFragment();
 
         } else if (id == R.id.nav_thirdPartyTrans) {
-
+            fragment = new thirdPartyFragment();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

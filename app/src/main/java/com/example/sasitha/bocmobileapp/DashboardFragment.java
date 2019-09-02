@@ -52,7 +52,7 @@ public class DashboardFragment extends Fragment {
         btnThirdParty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment = new OwnAccountFragment();
+                fragment = new thirdPartyFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
