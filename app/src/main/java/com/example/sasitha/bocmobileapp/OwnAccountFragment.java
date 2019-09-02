@@ -53,7 +53,7 @@ public class OwnAccountFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_own_account_transfer, null);
+        return inflater.inflate(R.layout.own_account_fragment, null);
 
     }
 
@@ -152,14 +152,16 @@ public class OwnAccountFragment extends Fragment {
                     String date = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(new Date());
                     bundle.putString("date", date);
 
-                    fragment = new OwnAccountFragment(); //edit this
+                    fragment = new OwnAccountConfirmFragment(); //edit this
+                    fragment.setArguments(bundle);
                     fragmentTransaction.replace(R.id.screen_area, fragment);
                     fragmentTransaction.commit();
 
                 }else if(payLater.isChecked()){
 
                     bundle.putString("date", date.getText().toString());
-                    fragment = new OwnAccountFragment(); //edit this
+                    fragment = new OwnAccountConfirmFragment(); //edit this
+                    fragment.setArguments(bundle);
                     fragmentTransaction.replace(R.id.screen_area, fragment);
                     fragmentTransaction.commit();
                 }
