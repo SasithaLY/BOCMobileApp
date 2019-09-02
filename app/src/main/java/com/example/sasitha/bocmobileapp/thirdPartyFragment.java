@@ -25,6 +25,7 @@ public class thirdPartyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "FUCK YOU!", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
