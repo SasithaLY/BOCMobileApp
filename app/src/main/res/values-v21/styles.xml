@@ -5,4 +5,12 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="Spinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+
+        <item name="android:popupTheme">@style/popUpMenuTheme</item>
+        <item name="android:textSize">22sp</item>
+
+
+    </style>
 </resources>

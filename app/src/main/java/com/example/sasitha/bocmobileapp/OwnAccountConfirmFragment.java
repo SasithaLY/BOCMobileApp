@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class OwnAccountConfirmFragment extends Fragment {
 
-    TextView fromAcc, toAcc, amount,date;
+    TextView fromAcc, toAcc, amount,date, txtTime, description;
     Button back, cancel, confirm;
 
     Fragment fragment = null;
@@ -42,6 +42,9 @@ public class OwnAccountConfirmFragment extends Fragment {
         toAcc = (TextView) view.findViewById(R.id.textViewToAcc);
         amount = (TextView) view.findViewById(R.id.textViewAmount);
         date = (TextView) view.findViewById(R.id.textViewDate);
+        txtTime = (TextView) view.findViewById(R.id.textViewTime);
+        description = (TextView) view.findViewById(R.id.textViewDescription);
+
         back = (Button) view.findViewById(R.id.buttonBack);
         cancel = (Button) view.findViewById(R.id.buttonCancel);
 
@@ -52,6 +55,8 @@ public class OwnAccountConfirmFragment extends Fragment {
             toAcc.setText(bundle2.getString("toAcc"));
             amount.setText(bundle2.getString("amount"));
             date.setText(bundle2.getString("date"));
+            txtTime.setText(bundle2.getString("time"));
+            description.setText(bundle2.getString("description"));
         }
 
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +74,19 @@ public class OwnAccountConfirmFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                Bundle bundle3 = new Bundle();
+                bundle3.putString("fromAcc" , fromAcc.getText().toString());
+                bundle3.putString("toAcc", toAcc.getText().toString());
+                bundle3.putString("amount" , amount.getText().toString());
+                bundle3.putString("description", description.getText().toString());
+                bundle3.putString("date", date.getText().toString());
+                bundle3.putString("time", txtTime.getText().toString());
+                Fragment fragmentD = new OwnAccountFragment();
+                fragmentD.setArguments(bundle3);
+                fragmentTransaction.replace(R.id.screen_area, fragmentD);
+
+                fragmentTransaction.commit();
+                //getActivity().setTitle("Own Account Transactions");
             }
         });
     }
