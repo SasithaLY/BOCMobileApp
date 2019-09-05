@@ -1,7 +1,9 @@
 package com.example.sasitha.bocmobileapp;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.SensorManager;
@@ -13,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +34,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +44,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static android.support.v4.content.ContextCompat.getSystemService;
+
 
 public class OwnAccountFragment extends Fragment {
 
@@ -96,6 +101,7 @@ public class OwnAccountFragment extends Fragment {
 
 
 
+
 //        payFrom = (EditText)view.findViewById(R.id.editTextPayFrom);
 //        payFrom.setEnabled(false);
 //        payTo = (EditText)view.findViewById(R.id.editTextPayTo);
@@ -109,6 +115,8 @@ public class OwnAccountFragment extends Fragment {
 
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
+
+
 
 
         if(payNow.isChecked()){
@@ -128,6 +136,8 @@ public class OwnAccountFragment extends Fragment {
             }
         });
 
+
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -138,10 +148,16 @@ public class OwnAccountFragment extends Fragment {
                 }else if(payLater.isChecked()){
                     datePicker.setVisibility(View.VISIBLE);
                     selectDate.setVisibility(View.VISIBLE);
-                    date.setVisibility(View.VISIBLE);
+
+                    if(date.getText().toString().isEmpty()){
+                        date.setVisibility(View.GONE);
+                    }else {
+                        date.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });
+
 
 
         payLater.setOnClickListener(new View.OnClickListener() {
@@ -149,7 +165,7 @@ public class OwnAccountFragment extends Fragment {
             public void onClick(View v) {
                 datePicker.setVisibility(View.VISIBLE);
                 selectDate.setVisibility(View.VISIBLE);
-                date.setVisibility(View.VISIBLE);
+               // date.setVisibility(View.VISIBLE);
             }
         });
 
@@ -157,6 +173,15 @@ public class OwnAccountFragment extends Fragment {
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(date.getText().toString().isEmpty()){
+                    date.setVisibility(View.GONE);
+                }else {
+                    date.setVisibility(View.VISIBLE);
+                }
+
+
+
                 Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
@@ -176,8 +201,9 @@ public class OwnAccountFragment extends Fragment {
             public void onDateSet(DatePicker view, int year, int month, int day) {
                 month = month + 1;
 
-                String value = month + "/" +day+ "/" +year;
+                String value = day + "/" +month+ "/" +year;
                 date.setText(value);
+                date.setVisibility(View.VISIBLE);
             }
         };
 
@@ -186,12 +212,14 @@ public class OwnAccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+
+                fragment = new OwnAccountConfirmFragment();
+
                 Bundle bundle = new Bundle();
                 bundle.putString("fromAcc" , fromAcc.getSelectedItem().toString());
                 bundle.putString("toAcc", toAcc.getSelectedItem().toString());
-                bundle.putString("amount" , amount.getText().toString());
-                bundle.putString("description", description.getText().toString());
 
+                bundle.putString("description", description.getText().toString());
 
 //                Intent intent = new Intent(OwnAccountTransfer.this, ConfirmTransaction.class);
 //                intent.putExtra("fromAcc" , fromAcc.getSelectedItem().toString());
@@ -201,7 +229,6 @@ public class OwnAccountFragment extends Fragment {
 
 
                 if(fromAcc.getSelectedItem().toString().equals("Select Account")){
-
                     Toast.makeText(getContext(), "Select an Account!", Toast.LENGTH_SHORT).show();
                     from.setError("Select an Account");
                     fromAcc.startAnimation(animShake);
@@ -229,19 +256,22 @@ public class OwnAccountFragment extends Fragment {
                     Toast.makeText(getContext(), "Cannot Transfer to same account", Toast.LENGTH_SHORT).show();
                 }else{
                     if(payNow.isChecked()){
-
-                        String date = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(new Date());
+                        double d = Double.parseDouble(amount.getText().toString());
+                        bundle.putString("amount" , String.format(Locale.getDefault(),"%.2f", d));
+                        String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
                         bundle.putString("date", date);
                         bundle.putString("time", "Pay Now");
-                        fragment = new OwnAccountConfirmFragment();
+                        //fragment = new OwnAccountConfirmFragment();
                         fragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.screen_area, fragment);
                         fragmentTransaction.commit();
 
                     }else if(payLater.isChecked()){
+                        double d = Double.parseDouble(amount.getText().toString());
+                        bundle.putString("amount" , String.format(Locale.getDefault(),"%.2f", d));
                         bundle.putString("time", "Pay Later");
                         bundle.putString("date", date.getText().toString());
-                        fragment = new OwnAccountConfirmFragment();
+
                         fragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.screen_area, fragment);
                         fragmentTransaction.commit();
@@ -257,12 +287,34 @@ public class OwnAccountFragment extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragmentD = new DashboardFragment();
-                //fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.screen_area, fragmentD);
 
-                fragmentTransaction.commit();
-                getActivity().setTitle("Home");
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Confirm!");
+                builder.setMessage("Are you sure you want to cancel?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Fragment fragmentD = new DashboardFragment();
+                        //fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.screen_area, fragmentD);
+
+                        fragmentTransaction.commit();
+                        getActivity().setTitle("Home");
+
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder.show();
+
+
             }
         });
 
@@ -276,7 +328,7 @@ public class OwnAccountFragment extends Fragment {
 
         List<String> acoountList = new ArrayList<>(Arrays.asList(accounts));
 
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, acoountList){
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.color_spinner_layout, acoountList){
 
 
 
@@ -304,20 +356,14 @@ public class OwnAccountFragment extends Fragment {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
 
-                View row = convertView;
 
-                if (row == null) {
-
-                    LayoutInflater inflater = getActivity().getLayoutInflater();
-                    row = inflater.inflate(R.layout.spinner_row, parent, false);
-
-                }
                 if(position == 0){
                     // Set the hint text color gray
                     tv.setTextColor(Color.GRAY);
                 }
                 else {
-                    tv.setTextColor(Color.BLACK);
+                    tv.setTextColor(Color.WHITE);
+
                 }
                 return view;
             }
@@ -326,7 +372,7 @@ public class OwnAccountFragment extends Fragment {
 
 
 
-        spinnerArrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
         fromAcc.setAdapter(spinnerArrayAdapter);
         toAcc.setAdapter(spinnerArrayAdapter);
 
@@ -371,10 +417,12 @@ public class OwnAccountFragment extends Fragment {
         });
 
         if(bundle4 != null){
+
             fromAcc.setSelection(spinnerArrayAdapter.getPosition(bundle4.getString("fromAcc")));
             toAcc.setSelection(spinnerArrayAdapter.getPosition(bundle4.getString("toAcc")));
             amount.setText(bundle4.getString("amount"));
             description.setText(bundle4.getString("description"));
+
             if(bundle4.getString("time").equals("Pay Now")){
                 radioGroup.check(R.id.radioBtnPayNow);
             }else if(bundle4.getString("time").equals("Pay Later")){
@@ -382,9 +430,26 @@ public class OwnAccountFragment extends Fragment {
             }
 
             date.setText(bundle4.getString("date"));
+
+            if(payNow.isChecked()){
+                datePicker.setVisibility(View.GONE);
+                selectDate.setVisibility(View.GONE);
+                date.setVisibility(View.GONE);
+            }else {
+                datePicker.setVisibility(View.VISIBLE);
+                selectDate.setVisibility(View.VISIBLE);
+                date.setVisibility(View.VISIBLE);
+            }
+
         }
 
 
 
+        if(date.getText().toString().isEmpty()){
+            date.setVisibility(View.GONE);
+        }
+
+
     }
+
 }
