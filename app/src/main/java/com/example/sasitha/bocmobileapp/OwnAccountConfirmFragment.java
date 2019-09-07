@@ -12,17 +12,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class OwnAccountConfirmFragment extends Fragment {
 
     TextView fromAcc, toAcc, amount,date, txtTime, description;
     Button back, cancel, confirm;
+
 
     Fragment fragment = null;
     FragmentManager fragmentManager;
@@ -54,6 +58,8 @@ public class OwnAccountConfirmFragment extends Fragment {
         back = (Button) view.findViewById(R.id.buttonBack);
         cancel = (Button) view.findViewById(R.id.buttonCancel);
         confirm = (Button) view.findViewById(R.id.buttonConfirm);
+
+
 
 
 
@@ -129,6 +135,7 @@ public class OwnAccountConfirmFragment extends Fragment {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                         Bundle bundle3 = new Bundle();
 
                         Random rand = new Random();
@@ -150,7 +157,16 @@ public class OwnAccountConfirmFragment extends Fragment {
                         fragmentTransaction.commit();
 
                     }
+
                 });
+//                try {
+//                    backImage.setVisibility(View.VISIBLE);
+//                    progressBar.setVisibility(View.VISIBLE);
+//                    TimeUnit.SECONDS.sleep(3);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+
 
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override

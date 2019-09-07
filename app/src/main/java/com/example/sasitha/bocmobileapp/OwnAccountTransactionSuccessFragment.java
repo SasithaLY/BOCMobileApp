@@ -2,8 +2,10 @@ package com.example.sasitha.bocmobileapp;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -28,13 +30,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -77,6 +82,9 @@ public class OwnAccountTransactionSuccessFragment extends Fragment {
 
     ProgressBar progressBar;
 
+    ImageView backImage;
+    ProgressBar progressBarTrans;
+
 
     @Nullable
     @Override
@@ -112,7 +120,24 @@ public class OwnAccountTransactionSuccessFragment extends Fragment {
 
         llPdf = (LinearLayout) view.findViewById(R.id.constraintLayoutPrint);
 
+        final AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+        final View customLayout = getLayoutInflater().inflate(R.layout.alert_dialog_layout, null);
+        alert.setView(customLayout);
+        TextView amountAlert = (TextView) customLayout.findViewById(R.id.alertAmount);
+        String amnt = bundle2.getString("amount");
 
+        String text = "Amount : Rs ";
+        amountAlert.setText(text+amnt);
+
+        final AlertDialog alertDialog = alert.create();
+        Button ok = (Button) customLayout.findViewById(R.id.alertOkBtn);
+        alertDialog.show();
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
 
         if(bundle2 != null){
 
@@ -122,7 +147,6 @@ public class OwnAccountTransactionSuccessFragment extends Fragment {
             amount.setText(bundle2.getString("amount"));
             date.setText(bundle2.getString("date"));
             description.setText(bundle2.getString("description"));
-
 
         }
 

@@ -94,7 +94,6 @@
         android:background="@drawable/btn_dropdown"
         android:entries="@array/accounts"
         android:popupBackground="@drawable/spinner_background"
-
         android:theme="@style/Spinner"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/textView2" />
