@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnAddThirdParty"
+        android:layout_width="318dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/round_button"
+        android:text="Third Party - BOC Accounts"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddThirdPartyBack"
+        android:layout_width="318dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="332dp"
+        android:background="@drawable/round_button"
+        android:text="Back"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddOtherAccounts"
+        android:layout_width="318dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="228dp"
+        android:background="@drawable/round_button"
+        android:text="Third Party - BOC Accounts"
+        android:textAllCaps="false"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Other Bank Accounts and Cards" />
+
+</android.support.constraint.ConstraintLayout>
