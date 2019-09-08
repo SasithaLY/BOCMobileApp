@@ -38,7 +38,7 @@ public class otherBankCardsFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                fragment = new otherBankCardsFragment();
+                fragment = new addAccountFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
