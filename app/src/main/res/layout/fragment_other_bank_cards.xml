@@ -123,10 +123,11 @@
         android:layout_width="350dp"
         android:layout_height="42dp"
         android:layout_marginTop="360dp"
-        android:background="@drawable/btn_dropdown_pressed"
+        android:background="@drawable/btn_dropdown_normal"
         android:dropDownWidth="match_parent"
         android:entries="@array/bankSpin"
-        android:popupBackground="@drawable/spinner_background"
+        android:popupBackground="@drawable/btn_dropdown_pressed"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
