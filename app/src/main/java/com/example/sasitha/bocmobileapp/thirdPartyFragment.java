@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class thirdPartyFragment extends Fragment
 {
     Button btnAddAccount, btnBack;
+
     Fragment fragment = null;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;

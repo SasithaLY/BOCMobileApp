@@ -30,6 +30,8 @@ public class addAccountFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
+        fragmentManager = getFragmentManager();
+
         btnAddThirdParty = (Button) view.findViewById(R.id.btnAddThirdParty);
         btnAddOtherAccounts = (Button) view.findViewById(R.id.btnAddOtherAccounts);
         btnAddThirdPartyBack = (Button) view.findViewById(R.id.btnAddThirdPartyBack);
