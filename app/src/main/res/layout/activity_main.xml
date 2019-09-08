@@ -4,25 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:background="@drawable/background"
-    >
+    tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnSignIn"
         android:layout_width="163dp"
-        android:layout_height="wrap_content"
+        android:layout_height="46dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/round_button"
         android:text="Sign In"
-        android:textSize="18sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
-    <include layout="@layout/toolbar_layout"/>
+
+    <EditText
+        android:id="@+id/editTextUserName"
+        android:layout_width="265dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="128dp"
+        android:background="@drawable/rouded_edittext"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="#f5e16c"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="265dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rouded_edittext"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="#f5e16c"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserName" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_layout" />
+
 
 </android.support.constraint.ConstraintLayout>

@@ -85,7 +85,6 @@ public class OwnAccountConfirmFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         Fragment fragmentD = new DashboardFragment();
                         fragmentTransaction.replace(R.id.screen_area, fragmentD);
-
                         fragmentTransaction.commit();
                         getActivity().setTitle("Home");
 
