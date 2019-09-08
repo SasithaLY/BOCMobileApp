@@ -14,6 +14,7 @@ import android.widget.Button;
 public class addAccountFragment extends Fragment
 {
     Button btnAddThirdParty, btnAddOtherAccounts, btnAddThirdPartyBack;
+
     Fragment fragment = null;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -37,7 +38,7 @@ public class addAccountFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                fragment = new addAccountFragment();
+                fragment = new addBocThirdPartyFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
@@ -48,7 +49,7 @@ public class addAccountFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                fragment = new addAccountFragment();
+                fragment = new otherBankCardsFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
