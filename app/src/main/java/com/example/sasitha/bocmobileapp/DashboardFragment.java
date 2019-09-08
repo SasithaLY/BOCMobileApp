@@ -57,6 +57,7 @@ public class DashboardFragment extends Fragment {
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
+                getActivity().setTitle("Third Party Transfers");
             }
         });
 
