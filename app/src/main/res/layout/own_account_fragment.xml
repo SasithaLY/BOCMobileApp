@@ -107,7 +107,6 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/rouded_edittext"
         android:ems="10"
-
         android:hint="0.00"
         android:inputType="numberDecimal"
         android:paddingLeft="10dp"

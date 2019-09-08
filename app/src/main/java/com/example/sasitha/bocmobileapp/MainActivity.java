@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 //        // toolbar.setLogo(R.drawable.boc_logo);
  //       toolbar.setLogo(R.drawable.boc_logo);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+       // getSupportActionBar().setDisplayShowTitleEnabled(false);
         //toolbar.setBackgroundColor(getResources().getColor(R.color.white));
 
         signIn = (Button) findViewById(R.id.btnSignIn);
