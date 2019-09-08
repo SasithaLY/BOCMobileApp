@@ -32,6 +32,8 @@ public class otherBankCardsFragment extends Fragment
         btnOtherBankCancel = (Button) view.findViewById(R.id.btnOtherBocCancel);
         btnOtherBankSubmit = (Button) view.findViewById(R.id.btnOtherBocSubmit);
 
+        fragmentManager = getFragmentManager();
+
         btnOtherBankCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)

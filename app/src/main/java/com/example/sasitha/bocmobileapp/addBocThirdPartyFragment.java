@@ -32,6 +32,8 @@ public class addBocThirdPartyFragment extends Fragment
         btnOtherBocCancel = (Button) view.findViewById(R.id.btnOtherBocCancel);
         btnOtherBocSubmit = (Button) view.findViewById(R.id.btnOtherBocSubmit);
 
+        fragmentManager = getFragmentManager();
+
         btnOtherBocCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
