@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="bankSpin">
-        <item>Hatton National Bank</item>
+        <item>HNB</item>
         <item>Commercial Bank</item>
         <item>Nations Trust Bank</item>
         <item>Sampath Bank</item>
+        <item>Cargills Bank</item>
+        <item>DFCC Bank PLC</item>
+        <item>HSBC</item>
+        <item>LOLC Finanace PLC</item>
+        <item>NDB Bank</item>
+        <item>Seylan Bank</item>
+        <item>Standard Chartered Bank</item>
     </string-array>
 </resources>

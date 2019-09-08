@@ -32,5 +32,38 @@ public class addAccountFragment extends Fragment
         btnAddThirdParty = (Button) view.findViewById(R.id.btnAddThirdParty);
         btnAddOtherAccounts = (Button) view.findViewById(R.id.btnAddOtherAccounts);
         btnAddThirdPartyBack = (Button) view.findViewById(R.id.btnAddThirdPartyBack);
+
+        btnAddThirdParty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                fragment = new addAccountFragment();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.screen_area, fragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        btnAddOtherAccounts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                fragment = new addAccountFragment();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.screen_area, fragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        btnAddThirdPartyBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                fragment = new DashboardFragment();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.screen_area, fragment);
+                fragmentTransaction.commit();
+            }
+        });
     }
 }
