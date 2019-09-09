@@ -16,7 +16,7 @@
         />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewTransferFrom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -31,7 +31,7 @@
         app:layout_constraintVertical_chainStyle="spread" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewTransferTo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -42,10 +42,10 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTransferFrom" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewTransferAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinnerPayTo" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewTransferDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -82,8 +82,8 @@
         android:entries="@array/accounts"
         android:popupBackground="@drawable/spinner_background"
         android:theme="@style/Spinner"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewTransferFrom"
+        app:layout_constraintStart_toEndOf="@+id/textViewTransferFrom" />
 
     <Spinner
         android:id="@+id/spinnerPayTo"
@@ -95,8 +95,8 @@
         android:entries="@array/accounts"
         android:popupBackground="@drawable/spinner_background"
         android:theme="@style/Spinner"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/textView2" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewTransferTo"
+        app:layout_constraintStart_toEndOf="@+id/textViewTransferTo" />
 
     <EditText
         android:id="@+id/editTextAmount"
@@ -114,7 +114,7 @@
         android:textColorHint="@color/colorAccent"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTransferAmount" />
 
     <EditText
         android:id="@+id/editTextDescription"
@@ -131,7 +131,7 @@
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTransferDescription" />
 
     <RadioGroup
         android:id="@+id/radioGroup2"
@@ -165,7 +165,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/btnCancel"
+        android:id="@+id/btnTransferCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -175,13 +175,13 @@
         android:textColor="@android:color/background_light"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnPay"
+        app:layout_constraintEnd_toStartOf="@+id/btnTransfer"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <Button
-        android:id="@+id/btnPay"
+        android:id="@+id/btnTransfer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -189,10 +189,10 @@
         android:background="@drawable/round_button"
         android:text="Pay"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnCancel"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnTransferCancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnCancel" />
+        app:layout_constraintStart_toEndOf="@+id/btnTransferCancel" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"

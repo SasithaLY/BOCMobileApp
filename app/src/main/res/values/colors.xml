@@ -9,6 +9,6 @@
     <color name="red">#ac0000</color>
     <color name="dark">#1d1d1d</color>
     <color name="textColorPrimary">#000000</color>
-    <color name="spinnerColor">#ffc400</color>
+    <color name="spinnerColor">#FFC400</color>
     <color name="spinnerDropDownColor">#ffffff</color>
 </resources>
