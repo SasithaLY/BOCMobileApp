@@ -318,7 +318,6 @@ public class OwnAccountFragment extends Fragment {
                 "0078190057"
         };
 
-
         List<String> acoountList = new ArrayList<>(Arrays.asList(accounts));
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.color_spinner_layout, acoountList){
