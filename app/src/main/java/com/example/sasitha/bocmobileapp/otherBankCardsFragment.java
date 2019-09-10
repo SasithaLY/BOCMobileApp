@@ -42,25 +42,14 @@ public class otherBankCardsFragment extends Fragment
         btnOtherBankSubmit = (Button) view.findViewById(R.id.btnOtherBocSubmit);
 
         editTextOtherCardNo = (EditText)  view.findViewById(R.id.editTextOtherCardNo);
-        editTextOtherName = (EditText)  view.findViewById(R.id.editTextOtherName);
-        editTextOtherNickName = (EditText)  view.findViewById(R.id.editTextOtherNickName);
-        editTextOtherMail = (EditText)  view.findViewById(R.id.editTextOtherMail);
+        editTextOtherName = (EditText)  view.findViewById(R.id.editTextBocOtherNickName);
+        editTextOtherNickName = (EditText)  view.findViewById(R.id.editTextBocOtherAccNo);
+        editTextOtherMail = (EditText)  view.findViewById(R.id.editTextBocOtherMail);
 
         fragmentManager = getFragmentManager();
 
-        btnOtherBankCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                fragment = new addAccountFragment();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.screen_area, fragment);
-                fragmentTransaction.commit();
-                getActivity().setTitle("Add Accounts");
-            }
-        });
-
-        btnOtherBankSubmit.setOnClickListener(new View.OnClickListener() {
+        btnOtherBankSubmit.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v)
             {
@@ -98,9 +87,11 @@ public class otherBankCardsFragment extends Fragment
             }
         });
 
-        btnOtherBankCancel.setOnClickListener(new View.OnClickListener() {
+        btnOtherBankCancel.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Confirm!");
                 builder.setMessage("Are you sure you want to cancel?");
