@@ -60,9 +60,9 @@ public class transferMoneyFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                Bundle bundle = new Bundle();
-                bundle.putString("tranFromAcc", textViewtransferFromAccNo.getText().toString());
-                bundle.putString("tranToAcc", textViewTransferToAccNo.getText().toString());
+                Bundle bundleTransMoney = new Bundle();
+                bundleTransMoney.putString("tranFromAcc", textViewtransferFromAccNo.getText().toString());
+                bundleTransMoney.putString("tranToAcc", textViewTransferToAccNo.getText().toString());
 
                 if(editTextAmount.getText().toString().isEmpty())
                 {
@@ -79,10 +79,10 @@ public class transferMoneyFragment extends Fragment
                 else
                 {
                     double d = Double.parseDouble(editTextAmount.getText().toString());
-                    bundle.putString("transAmount" , String.format(Locale.getDefault(),"%.2f", d));
-                    bundle.putString("tranDesc", editTextDescription.getText().toString());
+                    bundleTransMoney.putString("transAmount" , String.format(Locale.getDefault(),"%.2f", d));
+                    bundleTransMoney.putString("tranDesc", editTextDescription.getText().toString());
 
-                    fragment.setArguments(bundle);
+                    fragment.setArguments(bundleTransMoney);
                     //fragment = new OwnAccountConfirmFragment();
                     fragmentTransaction.replace(R.id.screen_area, fragment);
                     fragmentTransaction.commit();

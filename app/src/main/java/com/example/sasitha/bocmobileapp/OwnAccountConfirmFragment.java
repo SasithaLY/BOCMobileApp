@@ -12,15 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class OwnAccountConfirmFragment extends Fragment {
 
@@ -55,9 +52,9 @@ public class OwnAccountConfirmFragment extends Fragment {
         txtTime = (TextView) view.findViewById(R.id.textViewTime);
         description = (TextView) view.findViewById(R.id.textViewDescription);
 
-        back = (Button) view.findViewById(R.id.buttonBack);
-        cancel = (Button) view.findViewById(R.id.buttonCancel);
-        confirm = (Button) view.findViewById(R.id.buttonConfirm);
+        back = (Button) view.findViewById(R.id.btnConfirmBack);
+        cancel = (Button) view.findViewById(R.id.btnConfirmCancel);
+        confirm = (Button) view.findViewById(R.id.btnConfirmConfirm);
 
 
 
