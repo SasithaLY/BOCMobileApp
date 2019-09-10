@@ -74,10 +74,11 @@ public class DashboardFragment extends Fragment {
         btnPayBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment = new OwnAccountFragment();
+                //fragment = new PayBillsFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
+                getActivity().setTitle("Pay Bills");
             }
         });
 

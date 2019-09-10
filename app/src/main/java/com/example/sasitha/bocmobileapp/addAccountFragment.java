@@ -62,7 +62,7 @@ public class addAccountFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                fragment = new DashboardFragment();
+                fragment = new thirdPartyFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();

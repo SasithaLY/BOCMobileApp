@@ -1,6 +1,7 @@
 package com.example.sasitha.bocmobileapp;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -37,6 +39,9 @@ public class otherBankCardsFragment extends Fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        animShake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
+        vib = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
         btnOtherBankCancel = (Button) view.findViewById(R.id.btnOtherBocCancel);
         btnOtherBankSubmit = (Button) view.findViewById(R.id.btnOtherBocSubmit);
@@ -78,7 +83,7 @@ public class otherBankCardsFragment extends Fragment
                     vib.vibrate(120);
                 }
                 else{
-                    fragment = new addAccountFragment();
+                    fragment = new thirdPartyFragment();
                     fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.screen_area, fragment);
                     fragmentTransaction.commit();
@@ -101,7 +106,8 @@ public class otherBankCardsFragment extends Fragment
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
-                        Fragment fragmentD = new thirdPartyFragment();
+                        Fragment fragmentD = new addAccountFragment();
+                        fragmentTransaction = fragmentManager.beginTransaction();
                         fragmentTransaction.replace(R.id.screen_area, fragmentD);
                         fragmentTransaction.commit();
                         getActivity().setTitle("Third Party Transfers");
