@@ -9,4 +9,20 @@
     <string name="action_settings">Settings</string>
     <string name="transaction_details"><u>TRANSACTION DETAILS</u></string>
     <string name="trans"><u>TRANSACTION DETAILS</u></string>
+
+    <string name="billType">Bill Type : </string>
+    <string name="billAccNum">Bill Account Number : </string>
+    <string name="cusName">Customer Name : </string>
+    <string name="amount">Amount (Rs) : </string>
+    <string name="cancel">Cancel</string>
+    <string name="continueButton">Continue</string>
+    <string name="payVeri">Payment Verification</string>
+    <string name="edit">Edit</string>
+    <string name="confirmPay">Confirm Payment</string>
+    <string name="payDetails">Payment Details</string>
+    <string name="paySuccess">Payment Successful</string>
+    <string name="viewAll">View All Bill Payments</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
