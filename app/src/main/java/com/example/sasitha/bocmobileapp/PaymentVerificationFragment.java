@@ -46,7 +46,7 @@ public class PaymentVerificationFragment extends Fragment {
         Bundle bundleVerification = getArguments();
 
         fragmentManager = getFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
+
 
         type = (TextView) view.findViewById(R.id.billTypeDetails);
         accountNum = (TextView) view.findViewById(R.id.billAccountNumDetails);
@@ -55,7 +55,7 @@ public class PaymentVerificationFragment extends Fragment {
 
 
         edit = (Button) view.findViewById(R.id.editButtonPay);
-        cancel = (Button) view.findViewById(R.id.cancelbuttonpay);
+        cancel = (Button) view.findViewById(R.id.cancelPayButton);
         confirmPayment = (Button) view.findViewById(R.id.confirmPaymentButtonPay);
 
 
@@ -64,9 +64,9 @@ public class PaymentVerificationFragment extends Fragment {
 
         if(bundleVerification != null){
             type.setText(bundleVerification.getString("type"));
-            accountNum.setText(bundleVerification.getString("accountNum"));
+            accountNum.setText(bundleVerification.getString("accNum"));
             cusName.setText(bundleVerification.getString("cusName"));
-            amount.setText(bundleVerification.getString("amount"));
+            amount.setText(bundleVerification.getString("amountVal"));
 
         }
 
@@ -75,6 +75,7 @@ public class PaymentVerificationFragment extends Fragment {
             public void onClick(View v) {
 
                 Fragment fragmentNew = new DashboardFragment();
+                fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragmentNew);
                 fragmentTransaction.commit();
 
@@ -94,6 +95,7 @@ public class PaymentVerificationFragment extends Fragment {
 
                 Fragment fragmentPay = new PayBillsFragment();
                 fragmentPay.setArguments(bundleEdit);
+                fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragmentPay);
 
                 fragmentTransaction.commit();
@@ -115,6 +117,7 @@ public class PaymentVerificationFragment extends Fragment {
                 bundleConfirm.putString("amount", amount.getText().toString());
                 Fragment fragmentPay = new PaymentDetailsFragment();
                 fragmentPay.setArguments(bundleConfirm);
+                fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragmentPay);
 
                 fragmentTransaction.commit();

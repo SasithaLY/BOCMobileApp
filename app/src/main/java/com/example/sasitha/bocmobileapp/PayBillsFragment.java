@@ -138,6 +138,7 @@ public class PayBillsFragment extends Fragment {
                 bundle.putString("amountVal", amountVal.getText().toString());
 
                 fragment.setArguments(bundle);
+                fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
 
