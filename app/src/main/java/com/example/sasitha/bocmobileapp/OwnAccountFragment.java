@@ -4,9 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
@@ -15,7 +13,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +21,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,7 +30,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,8 +37,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import static android.support.v4.content.ContextCompat.getSystemService;
 
 
 public class OwnAccountFragment extends Fragment {
@@ -80,14 +73,14 @@ public class OwnAccountFragment extends Fragment {
         animShake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
         vib = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
-        from = (TextView) view.findViewById(R.id.textView);
-        to = (TextView) view.findViewById(R.id.textView2);
+        from = (TextView) view.findViewById(R.id.textViewTransferFrom);
+        to = (TextView) view.findViewById(R.id.textViewTransferTo);
         date = (TextView) view.findViewById(R.id.txtDate);
         selectDate = (TextView) view.findViewById(R.id.textViewSelectDate);
         datePicker = (ImageView) view.findViewById(R.id.imageViewDate);
 
-        pay = (Button) view.findViewById(R.id.btnPay);
-        cancel = (Button) view.findViewById(R.id.btnCancel);
+        pay = (Button) view.findViewById(R.id.btnTransfer);
+        cancel = (Button) view.findViewById(R.id.btnTransferCancel);
 
         fromAcc = (Spinner) view.findViewById(R.id.spinnerPayFrom);
         toAcc = (Spinner) view.findViewById(R.id.spinnerPayTo);
@@ -324,7 +317,6 @@ public class OwnAccountFragment extends Fragment {
                 "0075189026",
                 "0078190057"
         };
-
 
         List<String> acoountList = new ArrayList<>(Arrays.asList(accounts));
 

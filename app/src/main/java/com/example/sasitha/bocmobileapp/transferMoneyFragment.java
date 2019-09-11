@@ -17,24 +17,22 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
-public class otherBankCardsFragment extends Fragment
+import java.util.Locale;
+
+public class transferMoneyFragment extends Fragment
 {
-    Button btnOtherBankSubmit, btnOtherBankCancel;
-    EditText editTextOtherCardNo, editTextOtherName, editTextOtherNickName, editTextOtherMail;
-
-    Vibrator vib;
-    Animation animShake;
+    TextView textViewtransferFromAccNo, textViewTransferToAccNo;
+    EditText editTextAmount, editTextDescription;
+    Button btnTransferCancel, btnTransfer;
 
     Fragment fragment = null;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_other_bank_cards, null);
-    }
+    Vibrator vib;
+    Animation animShake;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -43,57 +41,56 @@ public class otherBankCardsFragment extends Fragment
         animShake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
         vib = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
-        btnOtherBankCancel = (Button) view.findViewById(R.id.btnOtherBocCancel);
-        btnOtherBankSubmit = (Button) view.findViewById(R.id.btnOtherBocSubmit);
+        textViewtransferFromAccNo = (TextView)view.findViewById(R.id.textViewtransferFromAccNo);
+        textViewTransferToAccNo = (TextView)view.findViewById(R.id.textViewTransferToAccNo);
 
-        editTextOtherCardNo = (EditText)  view.findViewById(R.id.editTextOtherCardNo);
-        editTextOtherName = (EditText)  view.findViewById(R.id.editTextBocOtherNickName);
-        editTextOtherNickName = (EditText)  view.findViewById(R.id.editTextBocOtherAccNo);
-        editTextOtherMail = (EditText)  view.findViewById(R.id.editTextBocOtherMail);
+        editTextAmount = (EditText) view.findViewById(R.id.editTextAmount);
+        editTextDescription = (EditText) view.findViewById(R.id.editTextDescription);
+
+        btnTransferCancel = (Button) view.findViewById(R.id.btnTransferCancel);
+        btnTransfer = (Button) view.findViewById(R.id.btnTransfer);
+
+        //Bundle bundle = getArguments();
 
         fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
 
-        btnOtherBankSubmit.setOnClickListener(new View.OnClickListener()
+        btnTransfer.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                if(editTextOtherCardNo.getText().toString().isEmpty())
+                Bundle bundleTransMoney = new Bundle();
+                bundleTransMoney.putString("tranFromAcc", textViewtransferFromAccNo.getText().toString());
+                bundleTransMoney.putString("tranToAcc", textViewTransferToAccNo.getText().toString());
+
+                if(editTextAmount.getText().toString().isEmpty())
                 {
-                    editTextOtherCardNo.setError("Enter Card Number!");
-                    editTextOtherCardNo.startAnimation(animShake);
+                    editTextAmount.setError("Enter amount!");
+                    editTextAmount.startAnimation(animShake);
                     vib.vibrate(120);
                 }
-                else if(editTextOtherName.getText().toString().isEmpty())
+                else if(editTextDescription.getText().toString().isEmpty())
                 {
-                    editTextOtherName.setError("Enter Name!");
-                    editTextOtherName.startAnimation(animShake);
+                    editTextDescription.setError("Enter Description!");
+                    editTextDescription.startAnimation(animShake);
                     vib.vibrate(120);
                 }
-                else if(editTextOtherNickName.getText().toString().isEmpty())
+                else
                 {
-                    editTextOtherNickName.setError("Enter Nick Name!");
-                    editTextOtherNickName.startAnimation(animShake);
-                    vib.vibrate(120);
-                }
-                else if(editTextOtherMail.getText().toString().isEmpty())
-                {
-                    editTextOtherMail.setError("Enter E-Mail!");
-                    editTextOtherMail.startAnimation(animShake);
-                    vib.vibrate(120);
-                }
-                else{
-                    fragment = new thirdPartyFragment();
-                    fragmentTransaction = fragmentManager.beginTransaction();
+                    double d = Double.parseDouble(editTextAmount.getText().toString());
+                    bundleTransMoney.putString("transAmount" , String.format(Locale.getDefault(),"%.2f", d));
+                    bundleTransMoney.putString("tranDesc", editTextDescription.getText().toString());
+
+                    fragment.setArguments(bundleTransMoney);
+                    //fragment = new OwnAccountConfirmFragment();
                     fragmentTransaction.replace(R.id.screen_area, fragment);
                     fragmentTransaction.commit();
-                    getActivity().setTitle("Add Accounts");
                 }
             }
         });
 
-        btnOtherBankCancel.setOnClickListener(new View.OnClickListener()
-        {
+        btnTransferCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -106,11 +103,10 @@ public class otherBankCardsFragment extends Fragment
                     @Override
                     public void onClick(DialogInterface dialog, int which)
                     {
-                        Fragment fragmentD = new addAccountFragment();
-                        fragmentTransaction = fragmentManager.beginTransaction();
+                        Fragment fragmentD = new DashboardFragment();
                         fragmentTransaction.replace(R.id.screen_area, fragmentD);
                         fragmentTransaction.commit();
-                        getActivity().setTitle("Third Party Transfers");
+                        getActivity().setTitle("Home");
                     }
                 });
 
@@ -124,7 +120,11 @@ public class otherBankCardsFragment extends Fragment
                 builder.show();
             }
         });
+    }
 
-        
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_transfer_money, null);
     }
 }
