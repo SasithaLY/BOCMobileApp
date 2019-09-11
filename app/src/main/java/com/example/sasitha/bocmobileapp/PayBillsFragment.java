@@ -1,18 +1,22 @@
 package com.example.sasitha.bocmobileapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.view.animation.Animation;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,9 +24,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import java.util.List;
+
 
 
 /**
@@ -82,7 +89,8 @@ public class PayBillsFragment extends Fragment {
     Button contButton;
     Button cancelButton;
     Spinner type;
-    EditText  accNum, cusName, amountVal;
+    EditText  accountNum, cusName, amountVal;
+    TextView bttext;
 
 
     Fragment fragment = null;
@@ -103,9 +111,10 @@ public class PayBillsFragment extends Fragment {
         fragmentManager = getFragmentManager();
 
         type = (Spinner) view.findViewById(R.id.billType);
-        accNum = (EditText) view.findViewById(R.id.billAccountNum);
+        accountNum = (EditText) view.findViewById(R.id.billAccountNum);
         cusName =  (EditText) view.findViewById(R.id.customerName);
         amountVal = (EditText) view.findViewById(R.id.amountToPay);
+        bttext = (TextView) view.findViewById(R.id.textViewbt);
 
         cancelButton =  (Button) view.findViewById(R.id.cancelbuttonpay);
         contButton =  (Button) view.findViewById(R.id.continueButton);
@@ -128,21 +137,42 @@ public class PayBillsFragment extends Fragment {
             public void onClick(View v)
             {
 
-                fragment = new PaymentVerificationFragment();
-
-                Bundle bundle = new Bundle();
-                bundle.putString("type" , type.getSelectedItem().toString());
-
-                bundle.putString("accNum", accNum.getText().toString());
-                bundle.putString("cusName", cusName.getText().toString());
-                bundle.putString("amountVal", amountVal.getText().toString());
-
-                fragment.setArguments(bundle);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.screen_area, fragment);
-                fragmentTransaction.commit();
 
 
+
+                if(type.getSelectedItem().toString().equals("Select Bill Type")){
+                    Toast.makeText(getContext(), "Select a Bill Type!", Toast.LENGTH_SHORT).show();
+ //                   bttext.setError("Select Bill Type");
+//                    type.startAnimation(animShake);
+//                    vib.vibrate(120);
+                }else if(accountNum.getText().toString().isEmpty()){
+                accountNum.setError("Please Enter an Account Number");
+//                accountNum.startAnimation(animShake);
+//                vib.vibrate(120);
+                }else if(cusName.getText().toString().isEmpty()){
+                    cusName.setError("Please Enter the Customer Name");
+//                    cusName.startAnimation(animShake);
+//                    vib.vibrate(120);
+                }else if(amountVal.getText().toString().isEmpty()){
+                    amountVal.setError("Please Enter the Amount to Pay");
+//                    amountVal.startAnimation(animShake);
+//                    vib.vibrate(120);
+                }else {
+
+                    fragment = new PaymentVerificationFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type" , type.getSelectedItem().toString());
+
+                    bundle.putString("accountNum", accountNum.getText().toString());
+                    bundle.putString("cusName", cusName.getText().toString());
+                    bundle.putString("amountVal", amountVal.getText().toString());
+                    fragment.setArguments(bundle);
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.screen_area, fragment);
+                    fragmentTransaction.commit();
+
+                }
 
 
 //                Intent i = new Intent(PayBills.this, PaymentVerification.class);
@@ -207,7 +237,7 @@ public class PayBillsFragment extends Fragment {
         if(bundleArguments != null){
 
             type.setSelection(spinnerArrayAdapter.getPosition(bundleArguments.getString("type")));
-            accNum.setText(bundleArguments.getString("accNum"));
+            accountNum.setText(bundleArguments.getString("accountNum"));
             cusName.setText(bundleArguments.getString("cusName"));
             amountVal.setText(bundleArguments.getString("amountVal"));
 

@@ -24,7 +24,7 @@ import java.util.Random;
 
 
 public class PaymentVerificationFragment extends Fragment {
-    TextView type, accountNum, cusName,amount;
+    TextView type, accountNum, cusName,amountVal;
     Button edit, cancel, confirmPayment;
 
 
@@ -51,7 +51,7 @@ public class PaymentVerificationFragment extends Fragment {
         type = (TextView) view.findViewById(R.id.billTypeDetails);
         accountNum = (TextView) view.findViewById(R.id.billAccountNumDetails);
         cusName = (TextView) view.findViewById(R.id.customerNameDetails);
-        amount = (TextView) view.findViewById(R.id.amountToPayDetails);
+        amountVal = (TextView) view.findViewById(R.id.amountToPayDetails);
 
 
         edit = (Button) view.findViewById(R.id.editButtonPay);
@@ -64,9 +64,9 @@ public class PaymentVerificationFragment extends Fragment {
 
         if(bundleVerification != null){
             type.setText(bundleVerification.getString("type"));
-            accountNum.setText(bundleVerification.getString("accNum"));
+            accountNum.setText(bundleVerification.getString("accountNum"));
             cusName.setText(bundleVerification.getString("cusName"));
-            amount.setText(bundleVerification.getString("amountVal"));
+            amountVal.setText(bundleVerification.getString("amountVal"));
 
         }
 
@@ -91,7 +91,7 @@ public class PaymentVerificationFragment extends Fragment {
                 bundleEdit.putString("type" , type.getText().toString());
                 bundleEdit.putString("accountNum", accountNum.getText().toString());
                 bundleEdit.putString("cusName" , cusName.getText().toString());
-                bundleEdit.putString("amount", amount.getText().toString());
+                bundleEdit.putString("amountVal", amountVal.getText().toString());
 
                 Fragment fragmentPay = new PayBillsFragment();
                 fragmentPay.setArguments(bundleEdit);
@@ -114,7 +114,7 @@ public class PaymentVerificationFragment extends Fragment {
                 bundleConfirm.putString("type" , type.getText().toString());
                 bundleConfirm.putString("accountNum", accountNum.getText().toString());
                 bundleConfirm.putString("cusName" , cusName.getText().toString());
-                bundleConfirm.putString("amount", amount.getText().toString());
+                bundleConfirm.putString("amountVal", amountVal.getText().toString());
                 Fragment fragmentPay = new PaymentDetailsFragment();
                 fragmentPay.setArguments(bundleConfirm);
                 fragmentTransaction = fragmentManager.beginTransaction();
