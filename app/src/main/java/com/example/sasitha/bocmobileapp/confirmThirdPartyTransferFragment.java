@@ -92,7 +92,7 @@ public class confirmThirdPartyTransferFragment extends Fragment
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Confirm!");
-                builder.setMessage("Are you sure you want to cancel?");
+                builder.setMessage("Are you sure you want to go back?");
                 builder.setCancelable(false);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -109,10 +109,10 @@ public class confirmThirdPartyTransferFragment extends Fragment
                         bundleConfirm.putString("amount" , textViewTranAmount.getText().toString());
                         bundleConfirm.putString("description", textViewTranDescrip.getText().toString());
 
-//                        Fragment fragmentD = new transferMoneyFragment();
-//                        fragmentD.setArguments(bundleConfirm);
-//                        fragmentTransaction.replace(R.id.screen_area, fragmentD);
-//                        fragmentTransaction.commit();
+                        Fragment fragmentD = new transferMoneyFragment();
+                        fragmentD.setArguments(bundleConfirm);
+                        fragmentTransaction.replace(R.id.screen_area, fragmentD);
+                        fragmentTransaction.commit();
 
                     }
                 });
