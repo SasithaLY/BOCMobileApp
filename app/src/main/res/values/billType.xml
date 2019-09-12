@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="billType">
+        <item>Select Bill Type</item>
+        <item>Water Bill</item>
+        <item>Electricity Bill</item>
+        <item>Broadband Bill</item>
+        <item>Cable TV Bill</item>
+        <item>Mobile Bill</item>
+    </string-array>
+</resources>
