@@ -82,8 +82,9 @@ public class transferMoneyFragment extends Fragment
                     bundleTransMoney.putString("transAmount" , String.format(Locale.getDefault(),"%.2f", d));
                     bundleTransMoney.putString("tranDesc", editTextDescription.getText().toString());
 
+                   // fragment.setArguments(bundleTransMoney);
+                    fragment = new confirmThirdPartyTransferFragment();
                     fragment.setArguments(bundleTransMoney);
-                    //fragment = new OwnAccountConfirmFragment();
                     fragmentTransaction.replace(R.id.screen_area, fragment);
                     fragmentTransaction.commit();
                 }
