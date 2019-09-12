@@ -9,12 +9,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class thirdPartyFragment extends Fragment
 {
     Button btnAddAccount, btnBack;
+    ListView listViewAccounts;
 
     Fragment fragment = null;
     FragmentManager fragmentManager;
@@ -32,6 +35,7 @@ public class thirdPartyFragment extends Fragment
 
         btnAddAccount = (Button) view.findViewById(R.id.btnAddAccount);
         btnBack = (Button) view.findViewById(R.id.btnThirdPartyBack);
+        listViewAccounts = (ListView) view.findViewById(R.id.listViewAccounts);
 
         fragmentManager = getFragmentManager();
 
@@ -53,6 +57,17 @@ public class thirdPartyFragment extends Fragment
             public void onClick(View v)
             {
                 fragment = new DashboardFragment();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.screen_area, fragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        listViewAccounts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                fragment = new transferMoneyFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();

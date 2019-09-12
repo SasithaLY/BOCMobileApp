@@ -46,6 +46,9 @@ public class confirmThirdPartyTransferFragment extends Fragment
         btnConfirmCancel = (Button) view.findViewById(R.id.btnConfirmCancel);
         btnConfirmConfirm = (Button) view.findViewById(R.id.btnConfirmConfirm);
 
+        fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+
         if(bundleConfirm != null)
         {
             textViewFromAccNo.setText(bundleConfirm.getString("tranFromAcc"));
@@ -60,16 +63,16 @@ public class confirmThirdPartyTransferFragment extends Fragment
             public void onClick(View v)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Confirm!");
+                builder.setTitle("Warning!");
                 builder.setMessage("Are you sure you want to cancel?");
                 builder.setCancelable(false);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Fragment fragmentD = new thirdPartyFragment();
-                        fragmentTransaction.replace(R.id.screen_area, fragmentD);
+                        fragment = new DashboardFragment();
+                        fragmentTransaction.replace(R.id.screen_area, fragment);
                         fragmentTransaction.commit();
-                        getActivity().setTitle("Third Party Transfers");
+                        getActivity().setTitle("Home");
 
                     }
                 });
@@ -90,42 +93,40 @@ public class confirmThirdPartyTransferFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Confirm!");
-                builder.setMessage("Are you sure you want to cancel?");
-                builder.setCancelable(false);
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        Bundle bundleConfirm = new Bundle();
+                        Bundle bundleBack = new Bundle();
 
-                        Random rand = new Random();
-                        int id = rand.nextInt(1000000);
+                        bundleBack.putString("fromAcc" , textViewFromAccNo.getText().toString());
+                        bundleBack.putString("toAcc", textViewToAccNo.getText().toString());
+                        bundleBack.putString("amount" , textViewTranAmount.getText().toString());
+                        bundleBack.putString("description", textViewTranDescrip.getText().toString());
 
-                        bundleConfirm.putString("id" , String.valueOf(id));
-                        bundleConfirm.putString("fromAcc" , textViewFromAccNo.getText().toString());
-                        bundleConfirm.putString("toAcc", textViewToAccNo.getText().toString());
-                        bundleConfirm.putString("amount" , textViewTranAmount.getText().toString());
-                        bundleConfirm.putString("description", textViewTranDescrip.getText().toString());
+                        fragment = new transferMoneyFragment();
+                        fragment.setArguments(bundleBack);
+                        fragmentTransaction.replace(R.id.screen_area, fragment);
+                        fragmentTransaction.commit();
 
-//                        Fragment fragmentD = new transferMoneyFragment();
-//                        fragmentD.setArguments(bundleConfirm);
-//                        fragmentTransaction.replace(R.id.screen_area, fragmentD);
-//                        fragmentTransaction.commit();
+            }
+        });
 
-                    }
-                });
+        btnConfirmConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Bundle bundleSuccess = new Bundle();
 
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                Random rand = new Random();
+                int id = rand.nextInt(1000000);
 
-                    }
-                });
+                bundleSuccess.putString("id" , String.valueOf(id));
+                bundleSuccess.putString("fromAcc" , textViewFromAccNo.getText().toString());
+                bundleSuccess.putString("toAcc", textViewToAccNo.getText().toString());
+                bundleSuccess.putString("amount" , textViewTranAmount.getText().toString());
+                bundleSuccess.putString("description", textViewTranDescrip.getText().toString());
 
-                builder.show();
-
+                fragment = new thirdPartySuccessFragment();
+                fragment.setArguments(bundleSuccess);
+                fragmentTransaction.replace(R.id.screen_area, fragment);
+                fragmentTransaction.commit();
             }
         });
     }
