@@ -129,7 +129,7 @@ public class PaymentVerificationFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Confirm!");
-                builder.setMessage("Are you sure you want to Pay this Bill");
+                builder.setMessage("Are you sure you want to Pay this Bill?");
                 builder.setCancelable(false);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
