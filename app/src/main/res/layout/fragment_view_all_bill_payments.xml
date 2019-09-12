@@ -119,8 +119,9 @@
         android:layout_marginStart="79dp"
         android:layout_marginLeft="79dp"
         android:layout_marginTop="56dp"
-        android:background="@color/Gold"
+        android:background="@drawable/titlebackground"
         android:text="All Bill Payment Details"
+
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -158,7 +159,6 @@
         android:textSize="18sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSavePDF"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -182,28 +182,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Bill Type" />
+                android:text="Bill Type"
+                android:background="@drawable/all_bill_border"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/all_bill_border"
                 android:text="Account No" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="Customer Name" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="Date" />
 
             <TextView
                 android:layout_width="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Amount" />
@@ -215,6 +221,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Water Bill" />
@@ -222,24 +229,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="23742381" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="Kamani Fernando" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="08-09-19" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="1200.00" />
         </TableRow>
@@ -251,30 +262,35 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="Mobile Bill" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="0766464780" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="Kamani Fernando" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="09-09-19" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="1500.00" />
         </TableRow>
@@ -286,30 +302,35 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="Cable Bill" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="4627437242" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="Kamani Fernando" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="11-09-19" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1"
                 android:text="3450.00" />
         </TableRow>
@@ -322,30 +343,35 @@
                 android:id="@+id/atvbt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/atvba"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/atvcn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/atvd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/atva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/all_bill_border"
                 android:layout_weight="1" />
         </TableRow>
     </TableLayout>

@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:background="@color/Gold"
+        android:background="@drawable/titlebackground"
         android:text="Pay Bills"
         android:textAllCaps="true"
         android:textColor="@android:color/black"

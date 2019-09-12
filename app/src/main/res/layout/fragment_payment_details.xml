@@ -119,7 +119,7 @@
         android:layout_marginStart="79dp"
         android:layout_marginLeft="79dp"
         android:layout_marginTop="56dp"
-        android:background="@color/Gold"
+        android:background="@drawable/titlebackground"
         android:text="Payment Successful"
         android:textAllCaps="false"
         android:textColor="@color/black"
