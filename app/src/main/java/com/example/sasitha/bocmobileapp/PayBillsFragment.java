@@ -123,12 +123,35 @@ public class PayBillsFragment extends Fragment {
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                fragment = new DashboardFragment();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.screen_area, fragment);
-                fragmentTransaction.commit();
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Confirm!");
+                builder.setMessage("Are you sure you want to cancel Bill Payments?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Fragment fragmentBack = new DashboardFragment();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.screen_area, fragmentBack);
+
+                        fragmentTransaction.commit();
+                        getActivity().setTitle("Home");
+
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder.show();
+
+
             }
         });
 
@@ -147,14 +170,17 @@ public class PayBillsFragment extends Fragment {
 //                    vib.vibrate(120);
                 }else if(accountNum.getText().toString().isEmpty()){
                 accountNum.setError("Please Enter an Account Number");
+                Toast.makeText(getContext(), "Please Enter an Account Number", Toast.LENGTH_SHORT).show();
 //                accountNum.startAnimation(animShake);
 //                vib.vibrate(120);
                 }else if(cusName.getText().toString().isEmpty()){
                     cusName.setError("Please Enter the Customer Name");
+                    Toast.makeText(getContext(), "Please Enter the Customer Name", Toast.LENGTH_SHORT).show();
 //                    cusName.startAnimation(animShake);
 //                    vib.vibrate(120);
                 }else if(amountVal.getText().toString().isEmpty()){
                     amountVal.setError("Please Enter the Amount to Pay");
+                    Toast.makeText(getContext(), "Please Enter the Amount to Pay", Toast.LENGTH_SHORT).show();
 //                    amountVal.startAnimation(animShake);
 //                    vib.vibrate(120);
                 }else {

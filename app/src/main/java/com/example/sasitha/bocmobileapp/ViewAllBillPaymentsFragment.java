@@ -14,10 +14,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
-public class PaymentDetailsFragment extends Fragment {
-    TextView type, accountNum, cusName,amountVal;
-    Button dashboard, viewAll;
+
+public class ViewAllBillPaymentsFragment extends Fragment {
+    TextView type, accountNum, cusName,amountVal, payDate;
+    Button dashboard;
+    String datePayed;
 
 
     Fragment fragment = null;
@@ -27,7 +32,7 @@ public class PaymentDetailsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_payment_details,null);
+        return inflater.inflate(R.layout.fragment_view_all_bill_payments,null);
 
     }
 
@@ -40,14 +45,18 @@ public class PaymentDetailsFragment extends Fragment {
         fragmentManager = getFragmentManager();
 
 
-        type = (TextView) view.findViewById(R.id.textViewBillTypeDisplay);
-        accountNum = (TextView) view.findViewById(R.id.textViewAccountNumberDisplay);
-        cusName = (TextView) view.findViewById(R.id.textViewCustomerNameDisplay);
-        amountVal = (TextView) view.findViewById(R.id.textViewPayedAmountDisplay);
+        type = (TextView) view.findViewById(R.id.atvbt);
+        accountNum = (TextView) view.findViewById(R.id.atvba);
+        cusName = (TextView) view.findViewById(R.id.atvcn);
+        amountVal = (TextView) view.findViewById(R.id.atva);
+        payDate = (TextView) view.findViewById(R.id.atvd);
 
 
-        dashboard = (Button) view.findViewById(R.id.buttonPayBillstoHome);
-        viewAll = (Button) view.findViewById(R.id.allbillpaybutton);
+        dashboard = (Button) view.findViewById(R.id.allbillstodash);
+        datePayed = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
+
+
+
 
 
 
@@ -56,6 +65,7 @@ public class PaymentDetailsFragment extends Fragment {
             accountNum.setText(bundleVerification.getString("accountNum"));
             cusName.setText(bundleVerification.getString("cusName"));
             amountVal.setText(bundleVerification.getString("amountVal"));
+            payDate.setText(datePayed);
 
         }
 
@@ -71,29 +81,6 @@ public class PaymentDetailsFragment extends Fragment {
 
             }
         });
-
-
-        viewAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Bundle bundleConfirm = new Bundle();
-
-
-                bundleConfirm.putString("type" , type.getText().toString());
-                bundleConfirm.putString("accountNum", accountNum.getText().toString());
-                bundleConfirm.putString("cusName" , cusName.getText().toString());
-                bundleConfirm.putString("amountVal", amountVal.getText().toString());
-                Fragment fragmentViewAll = new ViewAllBillPaymentsFragment();
-                fragmentViewAll.setArguments(bundleConfirm);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.screen_area, fragmentViewAll);
-
-                fragmentTransaction.commit();
-
-            }
-        });
-
 
 
 

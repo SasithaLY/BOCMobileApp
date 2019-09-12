@@ -74,10 +74,31 @@ public class PaymentVerificationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Fragment fragmentNew = new DashboardFragment();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.screen_area, fragmentNew);
-                fragmentTransaction.commit();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Confirm!");
+                builder.setMessage("Are you sure you want to cancel Bill Payments?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Fragment fragmentBack = new DashboardFragment();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.screen_area, fragmentBack);
+
+                        fragmentTransaction.commit();
+                        getActivity().setTitle("Home");
+
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder.show();
 
 
             }
@@ -106,7 +127,13 @@ public class PaymentVerificationFragment extends Fragment {
         confirmPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Confirm!");
+                builder.setMessage("Are you sure you want to Pay this Bill");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
                 Bundle bundleConfirm = new Bundle();
 
@@ -125,6 +152,18 @@ public class PaymentVerificationFragment extends Fragment {
             }
 
                 });
+
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder.show();
+            }
+        });
 
 
 
