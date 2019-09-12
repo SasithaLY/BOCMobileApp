@@ -1,5 +1,6 @@
 package com.example.sasitha.bocmobileapp;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -43,6 +44,26 @@ public class thirdPartySuccessFragment extends Fragment
 
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
+
+        final AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+        final View customLayout = getLayoutInflater().inflate(R.layout.alert_dialog_layout, null);
+        alert.setView(customLayout);
+        TextView amountAlert = (TextView) customLayout.findViewById(R.id.alertAmount);
+        String amnt = bundleSuccess.getString("amount");
+
+        String text = "Amount : Rs ";
+        amountAlert.setText(text+amnt);
+
+        final AlertDialog alertDialog = alert.create();
+        Button ok = (Button) customLayout.findViewById(R.id.alertOkBtn);
+        alertDialog.show();
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                alertDialog.dismiss();
+            }
+        });
 
         if(bundleSuccess != null){
 

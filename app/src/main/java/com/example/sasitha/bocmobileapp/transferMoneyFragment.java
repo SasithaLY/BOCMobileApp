@@ -50,10 +50,16 @@ public class transferMoneyFragment extends Fragment
         btnTransferCancel = (Button) view.findViewById(R.id.btnTransferCancel);
         btnTransfer = (Button) view.findViewById(R.id.btnTransfer);
 
-        //Bundle bundle = getArguments();
+        Bundle bundle = getArguments();
 
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
+
+        if(bundle != null)
+        {
+            editTextAmount.setText(bundle.getString("amount"));
+            editTextDescription.setText(bundle.getString("description"));
+        }
 
         btnTransfer.setOnClickListener(new View.OnClickListener()
         {
@@ -82,7 +88,6 @@ public class transferMoneyFragment extends Fragment
                     bundleTransMoney.putString("transAmount" , String.format(Locale.getDefault(),"%.2f", d));
                     bundleTransMoney.putString("tranDesc", editTextDescription.getText().toString());
 
-                   // fragment.setArguments(bundleTransMoney);
                     fragment = new confirmThirdPartyTransferFragment();
                     fragment.setArguments(bundleTransMoney);
                     fragmentTransaction.replace(R.id.screen_area, fragment);
