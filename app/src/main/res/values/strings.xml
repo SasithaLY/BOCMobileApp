@@ -9,6 +9,9 @@
     <string name="action_settings">Settings</string>
     <string name="transaction_details"><u>TRANSACTION DETAILS</u></string>
     <string name="trans"><u>TRANSACTION DETAILS</u></string>
+    <string name="forgotPass"><u>Forgot Password?</u></string>
+    <string name="unlockUser"><u>Unlock User</u></string>
+    <string name="allRights">Privacy &amp; Security | Terms of use © 2019 Bank of Ceylon. All Rights Reserved</string>
 
     <string name="billType">Bill Type : </string>
     <string name="billAccNum">Bill Account Number : </string>

@@ -173,8 +173,6 @@ public class OwnAccountFragment extends Fragment {
                     date.setVisibility(View.VISIBLE);
                 }
 
-
-
                 Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
@@ -258,13 +256,11 @@ public class OwnAccountFragment extends Fragment {
                         fragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.screen_area, fragment);
                         fragmentTransaction.commit();
-
                     }else if(payLater.isChecked()){
                         double d = Double.parseDouble(amount.getText().toString());
                         bundle.putString("amount" , String.format(Locale.getDefault(),"%.2f", d));
                         bundle.putString("time", "Pay Later");
                         bundle.putString("date", date.getText().toString());
-
                         fragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.screen_area, fragment);
                         fragmentTransaction.commit();
@@ -274,7 +270,6 @@ public class OwnAccountFragment extends Fragment {
 
             }
         });
-
 
 
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -360,8 +355,6 @@ public class OwnAccountFragment extends Fragment {
                 return view;
             }
         };
-
-
 
 
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_layout);
