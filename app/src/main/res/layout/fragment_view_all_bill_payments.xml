@@ -112,24 +112,7 @@
 <!--        app:layout_constraintTop_toBottomOf="@+id/textViewBillPaymentDetails" />-->
 
 
-    <TextView
-        android:id="@+id/textViewAllBillPaymentDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="79dp"
-        android:layout_marginLeft="79dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/titlebackground"
-        android:text="All Bill Payment Details"
-
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-<!--    <Button-->
+    <!--    <Button-->
 <!--        android:id="@+id/buttonPayBillstoHome"-->
 <!--        android:layout_width="135dp"-->
 <!--        android:layout_height="wrap_content"-->
@@ -145,6 +128,24 @@
 <!--        app:layout_constraintEnd_toStartOf="@+id/buttonSavePDF"-->
 <!--        app:layout_constraintHorizontal_bias="0.5"-->
 <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <TextView
+        android:id="@+id/textViewAllBillPaymentDetails"
+        android:layout_width="296dp"
+        android:textAlignment="center"
+        android:layout_height="35dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="48dp"
+
+        android:background="@drawable/titlebackground"
+        android:text="All Bill Payment Details"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/allbillstodash"

@@ -114,13 +114,14 @@
 
     <TextView
         android:id="@+id/textViewBillPaymentDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="268dp"
+        android:layout_height="35dp"
         android:layout_marginStart="79dp"
         android:layout_marginLeft="79dp"
         android:layout_marginTop="56dp"
         android:background="@drawable/titlebackground"
         android:text="Payment Successful"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="24sp"
