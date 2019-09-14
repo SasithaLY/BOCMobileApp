@@ -37,13 +37,14 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
+            <Button
                 android:id="@+id/txtViewLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Log out"
                 android:textAllCaps="true"
+                android:background="@color/colorPrimary"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="24sp"
 

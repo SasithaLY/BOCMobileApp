@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
         users.add(new User("kavini", "kavini123"));
 
 
-        // Here, thisActivity is the current activity
-
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
@@ -74,29 +72,35 @@ public class MainActivity extends AppCompatActivity {
                 String name = username.getText().toString();
                 String pass = password.getText().toString();
 
-                Intent intent = new Intent(MainActivity.this, Home.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, Home.class);
+//                startActivity(intent);
 
-//                if(name.isEmpty()){
-//                    username.setError("Enter Username!");
-//                }else if(pass.isEmpty()){
-//                    password.setError("Enter Password!");
-//                }else {
-//                    for(User u : users){
-//                        if((u.getUsername().equals(name)) && (u.getPassword().equals(pass))){
-//                            Intent intent = new Intent(MainActivity.this, Home.class);
-//                            startActivity(intent);
-//                            Toast.makeText(MainActivity.this, "Welcome "+name, Toast.LENGTH_SHORT).show();
-//                            break;
-//                        }else if((u.getUsername().equals(name)) && (!u.getPassword().equals(pass))){
-//                            Toast.makeText(MainActivity.this, "Password is incorrect", Toast.LENGTH_SHORT).show();
-//                            password.setError("Incorrect Password!");
-//                        }else {
-//                            Toast.makeText(MainActivity.this, "There is no such User!", Toast.LENGTH_SHORT).show();
-//                            username.setError("Incorrect Username!");
-//                        }
-//                    }
-//                }
+                if(name.isEmpty()){
+                    username.setError("Enter Username!");
+                }else if(pass.isEmpty()){
+                    password.setError("Enter Password!");
+                }else {
+                    for(User u : users){
+                        if((u.getUsername().equals(name)) && (u.getPassword().equals(pass))){
+                            username.setError(null);
+                            password.setError(null);
+                            Intent intent = new Intent(MainActivity.this, Home.class);
+                            startActivity(intent);
+                            Toast.makeText(MainActivity.this, "Welcome "+name, Toast.LENGTH_SHORT).show();
+                            break;
+                        }else if((u.getUsername().equals(name)) && (!u.getPassword().equals(pass))){
+                            Toast.makeText(MainActivity.this, "Password is incorrect", Toast.LENGTH_SHORT).show();
+                            password.setError("Incorrect Password!");
+                            username.setError(null);
+                            break;
+                        }else {
+                            Toast.makeText(MainActivity.this, "There is no such User!", Toast.LENGTH_SHORT).show();
+                            username.setError("Incorrect Username!");
+                            password.setError(null);
+
+                        }
+                    }
+                }
 
 
 

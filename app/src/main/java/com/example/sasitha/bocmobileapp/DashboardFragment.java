@@ -44,7 +44,6 @@ public class DashboardFragment extends Fragment {
                 fragment = new OwnAccountFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
-
                 fragmentTransaction.commit();
                 getActivity().setTitle("Own Account Transactions");
             }
@@ -64,10 +63,10 @@ public class DashboardFragment extends Fragment {
         btnAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment = new OwnAccountFragment();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.screen_area, fragment);
-                fragmentTransaction.commit();
+//                fragment = new OwnAccountFragment();
+//                fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.screen_area, fragment);
+//                fragmentTransaction.commit();
             }
         });
 
@@ -78,6 +77,7 @@ public class DashboardFragment extends Fragment {
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
+                getActivity().setTitle("Pay Bills");
             }
         });
 

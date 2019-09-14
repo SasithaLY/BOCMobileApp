@@ -60,6 +60,7 @@ public class thirdPartyFragment extends Fragment
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
+                getActivity().setTitle("Home");
             }
         });
 

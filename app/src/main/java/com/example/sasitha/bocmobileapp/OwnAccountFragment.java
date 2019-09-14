@@ -92,9 +92,6 @@ public class OwnAccountFragment extends Fragment {
         Bundle bundle4 = getArguments();
 
 
-
-
-
 //        payFrom = (EditText)view.findViewById(R.id.editTextPayFrom);
 //        payFrom.setEnabled(false);
 //        payTo = (EditText)view.findViewById(R.id.editTextPayTo);
@@ -244,6 +241,9 @@ public class OwnAccountFragment extends Fragment {
                 }else if(fromAcc.getSelectedItemPosition() == toAcc.getSelectedItemPosition()){
                     from.setError("Same Account Selected");
                     to.setError("Same Account Selected");
+                    fromAcc.startAnimation(animShake);
+                    toAcc.startAnimation(animShake);
+                    vib.vibrate(120);
                     Toast.makeText(getContext(), "Cannot Transfer to same account", Toast.LENGTH_SHORT).show();
                 }else{
                     if(payNow.isChecked()){
@@ -308,9 +308,9 @@ public class OwnAccountFragment extends Fragment {
 
         String[] accounts = new String[]{
                 "Select Account",
-                "0082166378",
-                "0075189026",
-                "0078190057"
+                "0082166378 - Savings",
+                "0075189026 - Current",
+                "0078190057 - SmartGen"
         };
 
         List<String> acoountList = new ArrayList<>(Arrays.asList(accounts));
@@ -324,16 +324,12 @@ public class OwnAccountFragment extends Fragment {
                 if(position == 0)
                 {
                     // Disable the first item from Spinner
-                    // First item will be use for hint
                     return false;
                 }
                 else
                 {
                     return true;
                 }
-
-
-
 
             }
 
@@ -365,10 +361,9 @@ public class OwnAccountFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItemText = (String) parent.getItemAtPosition(position);
-                // If user change the default selection
-                // First item is disable and it is used for hint
+
                 if(position > 0){
-                    // Notify the selected item text
+
                     Toast.makeText
                             (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
                             .show();
@@ -385,10 +380,8 @@ public class OwnAccountFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItemText = (String) parent.getItemAtPosition(position);
-                // If user change the default selection
-                // First item is disable and it is used for hint
+
                 if(position > 0){
-                    // Notify the selected item text
                     Toast.makeText
                             (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
                             .show();

@@ -10,10 +10,10 @@
     >
 
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#66ffffff"
-        />
+        android:background="#66ffffff" />
 
     <TextView
         android:id="@+id/textViewTransferFrom"
@@ -74,28 +74,34 @@
 
     <Spinner
         android:id="@+id/spinnerPayFrom"
-        android:layout_width="245dp"
+        android:layout_width="260dp"
         android:layout_height="43dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/btn_dropdown"
         android:entries="@array/accounts"
         android:popupBackground="@drawable/spinner_background"
         android:theme="@style/Spinner"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewTransferFrom"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewTransferFrom" />
 
     <Spinner
         android:id="@+id/spinnerPayTo"
-        android:layout_width="245dp"
+        android:layout_width="260dp"
         android:layout_height="43dp"
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/btn_dropdown"
         android:entries="@array/accounts"
         android:popupBackground="@drawable/spinner_background"
         android:theme="@style/Spinner"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewTransferTo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewTransferTo" />
 
     <EditText
