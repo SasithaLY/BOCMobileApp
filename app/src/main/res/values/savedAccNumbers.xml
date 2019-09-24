@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="savedAccs">
-        <item>0082166378</item>
-        <item>007518902</item>
-        <item>007819005</item>
+        <item>
+            Wimaladasa G.W.P.N. 0075112249
+        </item>
+        <item>
+            Yasathilaka L.D.P. 005718902
+        </item>
+        <item>
+            Yugma K.G.E. 264589005
+        </item>
+        <item>
+            Kumara W.K.L. 007812459
+        </item>
+        <item>
+            Kumarasinghe W.D.O.A. 007812648
+        </item>
     </string-array>
 </resources>

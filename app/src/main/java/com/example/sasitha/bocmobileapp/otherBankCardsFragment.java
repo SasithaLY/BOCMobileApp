@@ -110,7 +110,7 @@ public class otherBankCardsFragment extends Fragment
                         fragmentTransaction = fragmentManager.beginTransaction();
                         fragmentTransaction.replace(R.id.screen_area, fragmentD);
                         fragmentTransaction.commit();
-                        getActivity().setTitle("Third Party Transfers");
+                        getActivity().setTitle("Add Accounts");
                     }
                 });
 

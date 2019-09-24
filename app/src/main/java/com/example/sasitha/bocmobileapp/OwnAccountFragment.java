@@ -167,6 +167,7 @@ public class OwnAccountFragment extends Fragment {
                 if(date.getText().toString().isEmpty()){
                     date.setVisibility(View.GONE);
                 }else {
+                    selectDate.setError(null);
                     date.setVisibility(View.VISIBLE);
                 }
 
@@ -234,7 +235,7 @@ public class OwnAccountFragment extends Fragment {
                     description.startAnimation(animShake);
                     vib.vibrate(120);
                 }else if((payLater.isChecked()) && (date.getText().toString().isEmpty())){
-                    date.setError("Select a Date");
+                    selectDate.setError("Select a Date");
                     Toast.makeText(getContext(), "Select a Date", Toast.LENGTH_SHORT).show();
                     datePicker.startAnimation(animShake);
                     vib.vibrate(120);
@@ -310,7 +311,7 @@ public class OwnAccountFragment extends Fragment {
                 "Select Account",
                 "0082166378 - Savings",
                 "0075189026 - Current",
-                "0078190057 - SmartGen"
+                "0078190057 - Smart"
         };
 
         List<String> acoountList = new ArrayList<>(Arrays.asList(accounts));

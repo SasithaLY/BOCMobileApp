@@ -55,6 +55,7 @@ public class addAccountFragment extends Fragment
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
+                getActivity().setTitle("Add Accounts");
             }
         });
 

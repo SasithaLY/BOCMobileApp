@@ -9,13 +9,14 @@
         android:id="@+id/btnThirdPartyBack"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
-        android:layout_marginTop="536dp"
+        android:layout_marginTop="596dp"
         android:background="@drawable/round_button"
         android:text="Back"
         android:textAllCaps="true"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,14 +24,13 @@
         android:id="@+id/btnAddAccount"
         android:layout_width="149dp"
         android:layout_height="46dp"
-        android:layout_marginTop="472dp"
+        android:layout_marginTop="536dp"
         android:background="@drawable/round_button"
         android:text="Add Account"
         android:textAllCaps="true"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +38,7 @@
         android:id="@+id/textViewSavedAccounts"
         android:layout_width="278dp"
         android:layout_height="47dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="36dp"
         android:shadowColor="#000000"
         android:shadowDx="1"
         android:shadowDy="1"
@@ -50,19 +50,18 @@
         android:textStyle="bold"
         app:fontFamily="@font/fira_mono_bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/listViewAccounts"
-        android:layout_width="354dp"
-        android:layout_height="376dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="405dp"
+        android:layout_height="372dp"
+        android:layout_marginTop="124dp"
         android:clickable="true"
         android:entries="@array/savedAccs"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -11,9 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class DashboardFragment extends Fragment {
+public class Accounts extends Fragment {
 
-    Button btnOwnAccount, btnThirdParty, btnAcc, btnPayBill;
+
+    Button current, saving, view1,add;
 
     Fragment fragment = null;
     FragmentManager fragmentManager;
@@ -22,66 +23,69 @@ public class DashboardFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_dashboard, null);
-
+        return inflater.inflate(R.layout.activity_accounts,null);
     }
 
     @Override
-    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnOwnAccount = (Button) view.findViewById(R.id.btnOwnAcc);
-        btnThirdParty = (Button) view.findViewById(R.id.btnThirdPartyTr);
-        btnAcc = (Button) view.findViewById(R.id.btnAccounts);
-        btnPayBill = (Button) view.findViewById(R.id.btnPayBills);
+        super.onViewCreated(view, savedInstanceState);
 
         fragmentManager = getFragmentManager();
 
+        current = (Button) view.findViewById(R.id.btn_CurrentAccount);
+        saving = (Button) view.findViewById(R.id.btn_Saving_Account);
+        view1 = (Button) view.findViewById(R.id.btn_view_All);
+        add = (Button)view.findViewById(R.id.btn_addaccountdetails);
 
-        btnOwnAccount.setOnClickListener(new View.OnClickListener() {
+        current.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                fragment = new OwnAccountFragment();
+            public void onClick(View v)
+            {
+                fragment = new currentAccount();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
-                getActivity().setTitle("Own Account Transactions");
+                getActivity().setTitle("currentAccount");
             }
         });
 
-        btnThirdParty.setOnClickListener(new View.OnClickListener() {
+        saving.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                fragment = new thirdPartyFragment();
+            public void onClick(View v)
+            {
+                fragment = new savingAccounts();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
-                getActivity().setTitle("Third Party Transfers");
+                getActivity().setTitle("saving Accounts");
             }
         });
 
-        btnAcc.setOnClickListener(new View.OnClickListener() {
+        view1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                fragment = new Accounts();
+            public void onClick(View v)
+            {
+                fragment = new viewAll();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
-                getActivity().setTitle("Accounts");
+                getActivity().setTitle("view All");
             }
         });
 
-        btnPayBill.setOnClickListener(new View.OnClickListener() {
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment = new PayBillsFragment();
+                fragment = new AddNewAccountDetails();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, fragment);
                 fragmentTransaction.commit();
-                getActivity().setTitle("Pay Bills");
+                getActivity().setTitle("New Account");
             }
         });
-
-
     }
+
+
 }

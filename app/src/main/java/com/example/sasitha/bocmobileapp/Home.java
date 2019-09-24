@@ -107,7 +107,8 @@ public class Home extends AppCompatActivity
             setTitle("Home");
             fragment = new DashboardFragment();
         } else if (id == R.id.nav_accounts) {
-
+            fragment = new Accounts();
+            setTitle("Accounts");
         } else if (id == R.id.nav_ownAccountTrans) {
             setTitle("Own Account Transactions");
             fragment = new OwnAccountFragment();
